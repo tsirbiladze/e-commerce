@@ -4,10 +4,12 @@ namespace Tests\Unit\Product;
 
 use App\Models\Category;
 use App\Models\Product;
-use PHPUnit\Framework\TestCase;
+use App\Models\ProductVariation;
+use Tests\TestCase;
 
 class ProductTest extends TestCase
 {
+
     /**
      * A basic unit test example.
      *
@@ -28,6 +30,17 @@ class ProductTest extends TestCase
             Category::factory()->create()
         );
 
-        $this->assertInstanceOf(Category::class, $product->categories()->fist());
+        $this->assertInstanceOf(Category::class, $product->categories->first());
+    }
+
+    public function test_it_has_many_variations()
+    {
+        $product = Product::factory()->create();
+
+        $product->variations()->save(
+            ProductVariation::factory()->create()
+        );
+
+        $this->assertInstanceOf(ProductVariation::class, $product->variations->first());
     }
 }
