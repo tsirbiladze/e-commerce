@@ -32,6 +32,4 @@ class ProductIndexTest extends TestCase
                 'meta'
             ]);
     }
-
-
 }
