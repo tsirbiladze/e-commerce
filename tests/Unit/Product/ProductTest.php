@@ -43,4 +43,20 @@ class ProductTest extends TestCase
 
         $this->assertInstanceOf(ProductVariation::class, $product->variations->first());
     }
+
+    public function test_it_returns_money_instance_for_the_price()
+    {
+        $product = Product::factory()->create();
+
+        $this->assertInstanceOf(\App\Cart\Money::class, $product->price);
+    }
+
+    public function test_it_returns_a_formatted_price()
+    {
+        $product = Product::factory()->create([
+            'price' => 1000
+        ]);
+
+        $this->assertEquals($product->formattedPrice, '$10.00');
+    }
 }

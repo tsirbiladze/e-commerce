@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use App\Models\Traits\CanBeScoped;
-use App\Scoping\Scoper;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\Traits\HasPrice;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory , CanBeScoped;
+    use HasFactory, CanBeScoped, HasPrice;
 
     public function getRouteKeyName()
     {
